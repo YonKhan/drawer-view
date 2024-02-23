@@ -88,7 +88,7 @@ public class DrawerView: UIView {
     private var bottomConstraint            = NSLayoutConstraint()
     private var customHeightAnchor          = NSLayoutConstraint()
     
-    private var sholdRecalculateConstraints = false
+    private var sholdRecalculateConstraints = true
     private let shouldBlurBackground: Bool
     private lazy var hapticFeedback: UIImpactFeedbackGenerator = {
         return UIImpactFeedbackGenerator(style: UIImpactFeedbackGenerator.FeedbackStyle.medium)
@@ -179,7 +179,12 @@ public class DrawerView: UIView {
                 ])
         }
      
-        backgroundColor = .white
+        if #available(iOS 13.0, *) {
+            backgroundColor = .secondarySystemGroupedBackground
+        } else {
+            backgroundColor = .white
+        }
+        
         layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = shadowOpacity
