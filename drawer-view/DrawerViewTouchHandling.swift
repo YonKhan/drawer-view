@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 /// The protocol allows to resolve interceptions of touches for the subiews of `DrawerView`.
 @objc public protocol DrawerViewTouchHandling {
